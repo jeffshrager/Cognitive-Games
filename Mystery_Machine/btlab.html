@@ -1,0 +1,250 @@
+
+<!-- saved from url=(0046)http://nostoc.stanford.edu/jeff/chi/btlab.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="pragma" content="no-cache">
+<script language="JavaScript">
+<!-- hide
+
+function btgo() {
+ if (btlab.Input.value.substring(0,4) == 'mode')
+   {if (btlab.mode.value != '') saveTextAsFile();
+    btlab.history.value=btlab.Input.value;
+    btlab.history.value += '\n';
+    btlab.mode.value=(btlab.Input.value.substring(5));
+   }
+ else
+   {
+   if (btlab.mode.value == '')
+     alert("No mode has been set! You must set the mode before using the btlab. To set the mode, enter 'mode 6' (or whatever number) into the command line and click GO.")
+   else
+     btrun(btlab.Input.value);
+   }
+}
+
+function btrun(string) {
+  var char = null;
+  var inum = null;
+  var num = null;
+  var already = null;
+  btlab.history.value += '\n';
+  btlab.history.value += string + '\n';
+  for (i=0; i < string.length; i++)
+      {
+	  char = string.substring(i,i+1);
+          inum = '0123456789'.indexOf(char);
+	  if (inum > -1){
+	      num = inum;
+	  }
+	  else if ((!already) && num && (char == '?')) {
+	      already = 1;
+	      switch ('0123456789'.indexOf(btlab.mode.value)) {
+	      case 1: 
+		  i = (i - (1 + num));
+			  break;
+	      case 2: 
+			  i = (num - 1);
+			  break;
+	      case 3: 
+			  i = -1;
+			  break;
+	      case 4: 
+		  i = (2*(num-1))-1;
+			  break;
+	      case 5: 
+		  i = Math.floor(Math.random()*string.length)-1;
+			  break;
+	      case 6: 
+		  i = (i - (2*(num+1)));
+			  break;
+	      }
+	  }
+	  else if (num && (char != '?')) {
+                  for (j=0; j < num; j++) {
+		        btlab.history.value += char;}}
+
+    }
+    btlab.history.scrollTop = btlab.history.scrollHeight;
+}
+
+// -->
+</script>
+</head><body><form name="btlab">
+<table border="4">
+<tr>
+    <td>Commands:</td>
+<td>
+<input type="text" name="Input" size="30" onkeydown="if (event.keyCode == 13) btgo()">
+</td>
+<td> <font color=red><i> (Remember to set the mode!)</i></font></td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td>
+<table border="4">
+<tr>
+<td><input type="button" name="two" value="  +  " onclick="btlab.Input.value += &#39;+&#39;"></td>
+<td><input type="button" name="three" value="  ?  " onclick="btlab.Input.value += &#39;?&#39;"></td>
+<td><input type="button" name="plus" value="  -  " onclick="btlab.Input.value += &#39;-&#39;"></td>
+</tr>
+<tr>
+<td><input type="button" name="five" value="  1  " onclick="btlab.Input.value += &#39;1&#39;"></td>
+<td><input type="button" name="five" value="  2  " onclick="btlab.Input.value += &#39;2&#39;"></td>
+<td><input type="button" name="five" value="  3  " onclick="btlab.Input.value += &#39;3&#39;"></td>
+</tr>
+<tr>
+<td><input type="button" name="five" value="  4  " onclick="btlab.Input.value += &#39;4&#39;"></td>
+<td><input type="button" name="five" value="  5  " onclick="btlab.Input.value += &#39;5&#39;"></td>
+<td><input type="button" name="six" value="  6  " onclick="btlab.Input.value += &#39;6&#39;"></td>
+</tr>
+<tr>
+<td><input type="button" name="seven" value="  7  " onclick="btlab.Input.value += &#39;7&#39;"></td>
+<td><input type="button" name="eight" value="  8  " onclick="btlab.Input.value += &#39;8&#39;"></td>
+<td><input type="button" name="nine" value="  9  " onclick="btlab.Input.value += &#39;9&#39;"></td>
+</tr>
+<tr>
+<td><input type="button" name="clear" value="  CE  " onclick="btlab.Input.value = &#39;&#39;"></td>
+<td><input type="button" name="zero" value="  0  " onclick="btlab.Input.value += &#39;0&#39;"></td>
+<td><input type="button" name="DoIt" value="Go" onclick="btgo()"></td>
+</tr> 
+</table> 
+</td>
+<td>
+<img src="mm.jpeg" />
+</td>
+</tr>
+</table>
+<table border=4>
+<tr><td><input type="button" name="savefile" onclick="saveTextAsFile()" value="Click here to save the transcript to a .txt file"></td></tr>
+</table>
+<table border="4">
+<tr>
+<td>
+History:
+</td></tr>
+<tr><td>
+<textarea id="history" name="history" rows="30" cols="80" readonly=""></textarea><br>
+</td>
+</tr>
+</table>
+<table border="4">
+<tr>
+<td>? Mode:</td>
+<td>
+<input type="text" name="mode" size="3" readonly="">
+</td>
+</tr>
+</table>
+(This is only a mode display! To set the mode, enter, for example: "mode 6" into the command box at the top and press GO or Enter.  <font color="red">Warning: This will try to save the history and then
+clear it!</font>) <a target=_blank href=btlabanswers.html><br>Here is a cheat sheet of what
+the modes for the mystery key do.</a>
+
+</p>
+
+<p /><hr /><p />
+
+BtLab Instructions:
+
+</p><ul>
+
+<li>You must enter a mode before doing anything else. Type:
+<u>mode #</u> in the command box (at the top) and press GO. <font color="red">Warning: This will
+try to save the history and then clear it!</font> The mode # should
+be a number from 1 through 6. When a mode is set, it will appear in the box at the bottom. 
+
+<p>
+
+</p></li><li>A syntactically "correct" program is something like:
+nsnsns... where n is a single digit number (0-9) and s is a single
+character symbol. The symbols "+" and "-" are on the keypad, but you
+don't actually have to use the keypad (except for GO) to enter
+programs. Do not put spaces! Here are some examples of correct
+programs: 
+
+<br>
+
+<pre> 
+  1+2- 
+  4x5y1?
+  4x5y1?1q2w3e4r
+</pre>
+
+<br>
+
+To run the program press GO or Enter. To clear the entry, press C (or just
+erase it).
+
+<p>
+
+<font color="red">Warning:</font> "Incorrect" programs -- for example
+missing a number or with multi-digit numbers or letters -- will
+actually behave, but the results may be extremely confusing. (For
+example, this program: "12q34w" puts 2 'q's and 4 'w's because the
+first digit of a multi-digit number is overridden by the second --
+they do NOT make a multi-digit argument!) If you feel like you have an
+extremely smart subject, try letting him or her figure out how
+programs work <i>WITHOUT</i> giving him or her an example of a correct
+program!
+
+</p><p>
+
+</p></li></ul>
+
+<p></p><hr><p>
+</form>
+
+
+<script language="JavaScript">
+function saveTextAsFile()
+{      
+var date = new Date();
+// grab the content of the form field and place it into a variable
+    var textToWrite = document.getElementById("history").value;
+//  create a new Blob (html5 magic) that conatins the data from your form feild
+    var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
+    // Specify the name of the file to be saved
+    var fileNameToSaveAs = "MMxscript-Mode-"+btlab.mode.value+"-at-"+date.getTime()+".txt";
+    
+// Optionally allow the user to choose a file name by providing 
+// an imput field in the HTML and using the collected data here
+// var fileNameToSaveAs = txtFileName.text;
+
+// create a link for our script to 'click'
+    var downloadLink = document.createElement("a");
+//  supply the name of the file (from the var above).
+// you could create the name here but using a var
+// allows more flexability later.
+    downloadLink.download = fileNameToSaveAs;
+// provide text for the link. This will be hidden so you
+// can actually use anything you want.
+    downloadLink.innerHTML = "My Hidden Link";
+    
+// allow our code to work in webkit & Gecko based browsers
+// without the need for a if / else block.
+    window.URL = window.URL || window.webkitURL;
+          
+// Create the link Object.
+    downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+// when link is clicked call a function to remove it from
+// the DOM in case user wants to save a second file.
+    downloadLink.onclick = destroyClickedElement;
+// make sure the link is hidden.
+    downloadLink.style.display = "none";
+// add the link to the DOM
+    document.body.appendChild(downloadLink);
+    
+// click the new link
+    downloadLink.click();
+}
+
+function destroyClickedElement(event)
+{
+// remove the link from the DOM
+    document.body.removeChild(event.target);
+}
+</script>
+<script language="JavaScript">
+alert("Remember to set the mode before continuing! To set the mode, enter 'mode 6' (or whatever number) into the command line and click GO.")
+</script>
+</body>
+</html>

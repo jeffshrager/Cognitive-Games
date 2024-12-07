@@ -1,62 +1,79 @@
-# Counting Dots: Attention and Memory
+# How to Play the "Mary Is Both a Bank Teller and an Activist" Game
 
-## How to Play "Counting Dots"
-
-"Counting Dots" is a quick and engaging classroom activity designed to explore perceptual strategies, rapid counting, and cognitive processing. Here’s how it works:
-
-### Preparation:
-- Before the class begins, the teacher draws a set of 20 to 30 dots on the board, distributing them randomly across the surface. The dots should be large enough to be easily visible from the back of the room.
-- Cover the dots using another board or a large sheet of paper to keep them hidden until the activity starts.
-
-### Gameplay:
-1. When the class is ready, explain the task: each student must silently count the dots as quickly and accurately as possible when they are revealed. Emphasize that there should be no verbal counting or discussion during the task.
-2. Reveal the dots for a set period (e.g., 10–20 seconds, depending on the group size and complexity).
-
-### Post-Task Discussion:
-- Once the counting is complete, ask students to share their results. Most students will likely provide the correct number or be very close. However, the focus of the activity is not on correctness but on the strategies used.
-- Invite a few students to come to the board and demonstrate how they counted the dots, tracing the path or approach they took (e.g., grouping by rows, clusters, or scanning linearly).
+This game is a thought experiment designed to explore how language, context, and cognitive biases influence interpretation. It works well in classroom settings, encouraging critical thinking about probabilities, semantics, and reasoning.
 
 ---
 
-## Cognitive Insights: Exploring Subitizing, Attention, and Memory
+## Setup and Introduction:
+Start by introducing a fictional person, Mary, with the following description:
 
-"Counting Dots" provides a simple yet effective way to investigate several cognitive processes related to perception, attention, and memory. While not a novel task—students are familiar with counting sets of items—the activity highlights the mechanisms that allow humans to rapidly and efficiently enumerate objects and recall their mental strategies.
-
-### Subitizing:
-Subitizing refers to the ability to instantly and accurately identify the number of objects in a small set without needing to count them sequentially. In "Counting Dots," many participants will naturally subitize clusters of 3–5 dots within the larger set. This process allows for rapid enumeration of smaller groups, which are then combined to form the total count.
-
-### Attentional Spotlights:
-The task requires students to engage their attentional spotlight—a cognitive mechanism that selectively focuses on specific areas of the visual field while tracking progress. Importantly, this spotlight also integrates memory to avoid recounting dots that have already been processed. This seamless coordination between attention and working memory ensures accuracy during rapid counting.
-
-### Memory for the Path Taken:
-A key observation in this game is that participants can recall their counting path, even though they were not explicitly asked to do so beforehand. This demonstrates implicit spatial memory and the ability to mentally reconstruct sequences of visual attention. It reflects the brain’s capacity to encode and retrieve patterns of interaction with visual stimuli without conscious effort.
-
-By focusing on these processes, "Counting Dots" provides insights into the efficiency of human visual and cognitive systems in handling seemingly simple yet complex tasks. The ability to recall strategies also suggests that spatial memory and attentional patterns are deeply integrated into our cognitive architecture.
+> “Mary was deeply involved in political and social activism during her student years. She participated in protests, organized community events, and advocated for social change.”
 
 ---
 
-## How AI Might Perform at "Counting Dots"
+## The Scenario:
+After this introduction, present the class with two statements about Mary:
+- **(A)** Mary is a bank teller.
+- **(B)** Mary is both a bank teller and an activist.
 
-For an AI, the task of counting dots on a board may seem straightforward, but the specific implementation of the AI significantly impacts its performance. While object detection systems excel at identifying and classifying objects, replicating the human-like processes of subitizing, attentional focus, and path reconstruction requires more nuanced design.
+---
 
-### Challenges with Parallel Convolution Systems:
-Many AI systems, particularly those based on convolutional neural networks (CNNs), process visual input in parallel, merging information from across the display into a unified representation. While effective for detecting patterns, this approach can dilute the discrete representation of individual objects, making it harder to count accurately. Without specific training, such systems may struggle with tasks requiring precise object-by-object enumeration.
+## Task for Participants:
+Ask the participants to choose which statement they think is more likely: that Mary is simply a bank teller or that Mary is both a bank teller and an activist. Emphasize that they should rely on their intuition and reasoning to decide.
 
-### Sequential and Strategic Implementations:
-AI systems designed to emulate human strategies—sequentially parsing the visual field into smaller regions and counting within those areas—could perform better. This method mimics the way humans divide the task into manageable chunks, using working memory to track progress and avoid recounting. Implementing such a process would likely require reinforcement learning or explicit programming to handle attention shifts and area parsing.
+---
 
-### Dot Detectors:
-A well-trained "dot detector," specialized for identifying and counting discrete circular objects, might solve the task effectively out of the box. This approach bypasses the need for human-like strategies by leveraging the model's ability to instantly recognize and tally all dots within the visual field. While highly accurate, such systems lack the cognitive flexibility to generalize this behavior to more abstract tasks.
+## Discussion:
+1. Once everyone has made their choice, ask them to explain their reasoning. Highlight any patterns in how the class interprets the statements, focusing on the role of Mary’s background as an activist.
+2. Then introduce the normative probabilities perspective, emphasizing the logical fallacy of assuming that a more specific condition (Mary being both a bank teller and an activist) is more probable than a broader one (Mary being a bank teller).
 
-### Comparison to Human Performance:
-Unlike humans, who naturally integrate subitizing, attentional memory, and path reconstruction, an AI’s success depends heavily on its training and architecture. Human strategies are inherently adaptive and flexible, while AI may struggle with variations in dot size, distribution, or occlusion unless specifically trained to handle such scenarios.
+---
 
-In summary, while a simple dot detection model might outperform humans in raw speed and accuracy, more complex implementations that emulate human-like strategies would provide greater insights into how artificial systems can replicate cognitive processes.
+## Cognitive Insights: Exploring the Role of Context and "Both"
+
+This game highlights key aspects of how people interpret language and make judgments under uncertainty. It also draws attention to the multiple interpretations of "both" in context:
+
+### The Conjunction Fallacy:
+- According to Kahneman and Tversky (1983), many people choose the more specific statement (B) because it aligns with Mary’s activist background.
+- However, this violates normative probabilities since the likelihood of two conditions being true simultaneously (bank teller and activist) cannot exceed the likelihood of either condition alone. This bias is known as the *conjunction fallacy*.
+
+### Contextual Anchoring:
+- The introduction of Mary as a former activist creates a mental anchor, making participants focus on her activism when evaluating the statements.
+- This context influences their interpretation of "both" as connecting two traits they see as consistent with her identity.
+
+### Interpretations of "Both":
+The word "both" in statement (B) plays a critical role in shaping participants’ reasoning:
+- **Logical Interpretation:** Some participants may interpret "both" as strictly additive, focusing on Mary’s simultaneous possession of the two roles.
+- **Implicit Emphasis:** For others, "both" suggests a stronger connection or consistency between the traits. They might reason that Mary’s activist identity makes it more likely she would retain that aspect of herself even as a bank teller.
+
+The dual interpretations of "both" highlight how language subtly frames reasoning processes and shapes decision-making.
+
+### Normative Versus Descriptive Reasoning:
+- The game underscores the tension between *normative reasoning* (what is logically correct) and *descriptive reasoning* (how people actually think).
+- While probabilities dictate that statement (A) is more likely, the descriptive reality is that people’s judgments are shaped by narrative coherence and context.
+
+---
+
+## How AI Might Perform at This Task
+
+AI systems provide an intriguing contrast to human reasoning in this game. Their performance would depend on their design and how they handle probabilities, language, and context:
+
+### Strengths in Logical Reasoning:
+- A rule-based AI system or one explicitly programmed with probabilistic logic would correctly identify statement (A) as more likely, adhering to normative probabilities.
+- Such systems excel at tasks requiring strict adherence to mathematical reasoning.
+
+### Challenges with Context and Bias:
+- Language models like GPT, trained on narrative-rich datasets, might favor statement (B) because they integrate context heavily in their reasoning. For example, the model might associate activism with Mary’s description and prioritize narrative consistency over strict probabilities.
+
+### Simulating Human Bias:
+- Interestingly, an AI model designed to mimic human reasoning might replicate the conjunction fallacy if it were trained to emphasize narrative coherence or contextual anchoring. This could make it choose (B) over (A) in a way that aligns with typical human responses.
+
+### Limitations in Nuanced Interpretation of "Both":
+- AI may struggle to fully capture the subtle variations in how "both" is interpreted. While it could logically parse the word as additive, it might miss the implicit emphasis participants place on the term when contextualized with Mary’s background.
 
 ---
 
 ## Selected References
-- LeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. *Nature*, 521(7553), 436–444.
-- Serre, T. (2019). Deep learning: The good, the bad, and the ugly. *Annual Review of Vision Science*, 5, 399–426.
-- Ullman, S. (1984). Visual routines. *Cognition*, 18(1-3), 97–159.
-- Rumelhart, D. E., Hinton, G. E., & Williams, R. J. (1986). Learning representations by back-propagating errors. *Nature*, 323(6088), 533–536.
+- Kahneman, D., & Tversky, A. (1983). Choices, values, and frames. *American Psychologist, 39*(4), 341–350.
+- Hertwig, R., & Gigerenzer, G. (1999). The ‘conjunction fallacy’ revisited: How intelligent inferences look like reasoning errors. *Journal of Behavioral Decision Making, 12*(4), 275–305.
+- Oaksford, M., & Chater, N. (2007). Bayesian Rationality: The Probabilistic Approach to Human Reasoning. Oxford University Press.

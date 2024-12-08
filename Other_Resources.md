@@ -1,5 +1,5 @@
 ---
-An interactive presentation of Fitts’s Law. Written in 2005 by Marcin
+An interactive presentation of Fitts's Law. Written in 2005 by Marcin
 Wichary for the Vrije Universiteit:
 
 https://fww.few.vu.nl/hci/interactive/fitts/

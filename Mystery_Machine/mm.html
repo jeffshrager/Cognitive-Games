@@ -67,24 +67,79 @@ function btrun(string) {
 
 // -->
 </script>
+
+<script>
+// ----- Mystery Machine Phase Controller -----
+// Start in Phase 1 (training): "?" is hidden and disabled.
+window.mmPhase = 1;
+
+// Move to Phase 2: save transcript like a mode change, reveal "?", set mode 3.
+function goPhase2() {
+
+  // Switch to Phase 2
+  window.mmPhase = 2;
+
+  // Reveal "?" key if present
+  var q = document.getElementById('qkey');
+  if (q) q.style.display = '';
+
+  // Replace Phase 1 banner text instead of removing it
+  var lab = document.getElementById('phaseLabel');
+  if (lab) lab.innerHTML = 'Phase 2: Figuring out the [?] Key';
+  var labi = document.getElementById('phaseText');
+  if (labi) labi.innerHTML = "Your goal is to figure out what the ? key does. You're in mode 3 now. Once you've figured it out for mode 3, try changing modes by entering a new mode command (for example: mode 2) and presing enter. When you change modes your history will be automatically saved. BE SURE TO CLICK THE [SAVE HISTORY]  AT THE VERY END TO SAVE THE FINAL HISTORY!'"
+  
+  // Remove only the "Move to Phase 2" button
+  var btn = document.getElementById('toPhase2');
+  if (btn && btn.parentNode) btn.parentNode.removeChild(btn);
+
+  // Set mode 3 via existing input/go pipeline
+  try {
+    if (typeof btlab !== "undefined" && btlab.Input) {
+      btlab.Input.value = 'mode 3';
+      if (typeof btgo === "function") btgo();
+    }
+  } catch (e) { /* ignore */ }
+}
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  try {
+    if (typeof btlab !== "undefined" && btlab.mode) {
+      btlab.mode.value = '3'; // default mode for Phase 1
+    }
+  } catch (e) {}
+});
+</script>
+
 </head><body><form name="btlab">
+
+<div style="margin:12px 0; padding:12px; border:3px solid #333">
+  <div id="phaseLabel" style="font-size:24px; font-weight:800">Phase 1: Learn the Mystery Machine.</div>
+  <div id="phaseText" style="margin:12px 0; padding:12px; border:3px solid #333; font-size:18px; font-weight:400;">
+    Click on the keypad below, or use your keyboard, to enter MM programs, and then either click "GO" or press ENTER to run them. MM programs are sequences of steps, each one a digit fillowed by a character, like "5+", or "5+6-3+4-" etc.
+(If you're using the keyboard, you cant use other characters than just + and -)<br><p>
+ When you think you understand how the basic MM works, click <b>"Click to Move to Phase 2"</b>. (The history will automatically be saved when you do this.)</p>
+</div></div>
+
 <table border="4">
 <tr>
     <td>Commands:</td>
 <td>
 <input type="text" name="Input" size="30" onkeydown="if (event.keyCode == 13) btgo()">
 </td>
-<td> <font color=red><i> (Remember to set the mode!)</i></font></td>
+<td></td>
 </tr>
 </table>
-
 <table>
 <tr>
 <td>
 <table border="4">
 <tr>
 <td><input type="button" name="two" value="  +  " onclick="btlab.Input.value += &#39;+&#39;"></td>
-<td><input type="button" name="three" value="  ?  " onclick="btlab.Input.value += &#39;?&#39;"></td>
+<td><input id="qkey" type="button" name="three" style="display:none" value="  ?  " onclick="btlab.Input.value += &#39;?&#39;"></td>
 <td><input type="button" name="plus" value="  -  " onclick="btlab.Input.value += &#39;-&#39;"></td>
 </tr>
 <tr>
@@ -108,14 +163,16 @@ function btrun(string) {
 <td><input type="button" name="DoIt" value="Go" onclick="btgo()"></td>
 </tr> 
 </table> 
-</td>
-<td>
-<img src="mm.jpeg" />
-</td>
+</table border=4>
+<tr>
+  <td>
+    <input type="button" style="font-size:18px; padding:8px" name="savefile" onclick="saveTextAsFile()" value="Save History">
+  </td>
+  <td id="toPhase2" >
+      <input type="button" style="font-size:18px; padding:8px" onclick="goPhase2()" value="Click to Move to Phase 2">
+      </button>
+  </td>
 </tr>
-</table>
-<table border=4>
-<tr><td><input type="button" name="savefile" onclick="saveTextAsFile()" value="Click here to save the transcript to a .txt file"></td></tr>
 </table>
 <table border="4">
 <tr>
@@ -127,6 +184,7 @@ History:
 </td>
 </tr>
 </table>
+
 <table border="4">
 <tr>
 <td>? Mode:</td>
@@ -135,9 +193,12 @@ History:
 </td>
 </tr>
 </table>
-(This is only a mode display! To set the mode, enter, for example: "mode 6" into the command box at the top and press GO or Enter.  <font color="red">Warning: This will try to save the history and then
-clear it!</font>) <a target=_blank href=btlabanswers.html><br>Here is a cheat sheet of what
-the modes for the mystery key do.</a>
+(This is only a mode display! To set the mode, enter, for example:
+"mode 6" into the command box at the top and press GO or
+Enter.  <font color="red">Warning: Changing the mode will save the
+History and then clear it!</font>) <a target=_blank
+href=btlabanswers.html><br>Here is a cheat sheet of what the modes for
+the mystery key do.</a>
 
 </p>
 
@@ -147,10 +208,7 @@ BtLab Instructions:
 
 </p><ul>
 
-<li>You must enter a mode before doing anything else. Type:
-<u>mode #</u> in the command box (at the top) and press GO. <font color="red">Warning: This will
-try to save the history and then clear it!</font> The mode # should
-be a number from 1 through 6. When a mode is set, it will appear in the box at the bottom. 
+<li>Mode 3 is set by default so you can start immediately. If you want to change modes, type: <u>mode #</u> in the command box and press GO. <font color="red">Warning: Changing modes will try to save the history and then clear it!</font> The mode # can be 1 through 6. The current mode appears in the box at the bottom. 
 
 <p>
 
@@ -197,13 +255,16 @@ program!
 <script language="JavaScript">
 function saveTextAsFile()
 {      
-var date = new Date();
-// grab the content of the form field and place it into a variable
+    var date = new Date();
+    // grab the content of the form field and place it into a variable
     var textToWrite = document.getElementById("history").value;
-//  create a new Blob (html5 magic) that conatins the data from your form feild
+    //  create a new Blob (html5 magic) that conatins the data from your form feild
     var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
     // Specify the name of the file to be saved
-    var fileNameToSaveAs = "MMxscript-Mode-"+btlab.mode.value+"-at-"+date.getTime()+".txt";
+
+    // Use ISO-like format but safe for filenames
+    var stamp = date.toISOString().replace(/[:]/g, '-'); // e.g. "2025-10-23T16-47-05.123Z"
+    var fileNameToSaveAs = "MMxscript-Mode-" + btlab.mode.value + "-at-" + stamp + ".txt";
     
 // Optionally allow the user to choose a file name by providing 
 // an imput field in the HTML and using the collected data here
@@ -242,9 +303,6 @@ function destroyClickedElement(event)
 // remove the link from the DOM
     document.body.removeChild(event.target);
 }
-</script>
-<script language="JavaScript">
-alert("Remember to set the mode before continuing! To set the mode, enter 'mode 6' (or whatever number) into the command line and click GO.")
 </script>
 </body>
 </html>

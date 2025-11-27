@@ -1,0 +1,257 @@
+\documentclass[12pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage{titlesec}
+\usepackage{abstract}
+
+\doublespacing
+
+\title{The Mystery Machine: A Classroom Investigation of the Cognitive Processes Underlying Instructionless Learning}
+\author{Jeff Shrager}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{quote}
+\textbf{``The Homework Machine, Oh, the Homework Machine, Most perfect contraption that's ever been seen...''} \\
+--- Shel Silverstein
+\end{quote}
+
+\begin{abstract}
+Instructionless Learning is the process of figuring out an unfamiliar setting without being told. It is the more commonplace cousin of exploratory learning and scientific discovery, and is one of the most familiar and efficient ways people learn in everyday settings. I describe a classroom activity that enables students to observe and analyze instructionless learning at the cognitive level. Learners must figure out how to operate a slightly puzzling device, called the Mystery Machine, through observation, experiment, and reasoning. By observing a learner struggle to figure out the Mystery Machine, students learn about the cognitive operators that guide Instructionless Learning, and about the cognitive operators learners deploy in such settings, and about the gradual construction of "mental models" -- the knowledge that enable us to reason effectively in complex settings.
+\end{abstract}
+
+\section{Introduction}
+
+People are remarkably good at spontaneously figuring out new gadgets or settings—for example, a new app, a rental car, or a restaurant ordering system.  I call this cognitive skill ``Instructionless Learning''\cite{shrager1986instructionless}. Instructionless learning is neither mere guessing nor is it as careful as scientific reasoning. Learners refine their understanding through repeated cycles of observation, hypothesis formation, experimentation, explanation, and evolution of their ``mental model.''\footnote{In this article, I will use the vague terms "model" (sometimes "mental model"), "understanding", and "knowledge" interchangeably.} 
+
+This article describes an in-class experiment in which learners figure out a simulated device, called the ``Mystery Machine'' which is designed to be slightly confusing so that observers can study how learners deploy Instructionless Learning.\footnote{This activity was developed for Symbolic Systems 245, a senior applied cognition seminar at Stanford University. It was used for over two decades by hundreds of Stanford students.} I briefly outline the procedure, and then discuss the structure of Instructionless Learning that students are likely to observe, and then the important cognitive process of ‘View Application’ which  changes learners’ mental model. I end with suggestions for in-class discussion.
+
+\section{The Mystery Machine Exercise}
+
+This exercise adapts classic work by David Klahr and colleagues\cite{klahr2000exploring}. The Mystery Machine itself (hereafter "MM", Figure \ref{fig1}, \cite{MMRepo}) is browser-based. Students will directly observe their teammates engaged in Instructionless Learning about the MM. In guided discussion they will develop an understand of how Instructionless Learning works, and how mental models form and evolve during Instructionless Learning. The exercise takes about an hour, including discussion. 
+
+\section{Procedure}
+
+\subsection{Phase 1: Learning the MM Basics}
+
+Students form small groups. Each group opens one copy of the MM on a browser. The device comes up in "Phase 1: Learn the Mystery Machine." For brevity, I omit detailed explanation of the MM here; the facilitator should study it in advance and guide students through its basic functionality until students can enter commands and see predictable results (about 10 minutes). Use the displayed keypad at first; later showing that they can type directly into the command field and press ENTER. Students should also know how to save the history. Although saving is mostly automatic, it's worth experiencing so that the file-saving pop-up isn't a surprise, and because students will need to do it manually at the end of the exercise. 
+
+\begin{figure}[!htb]
+    \centering
+      \makebox[\textwidth]{\includegraphics[width=\textwidth]{btlab1.png}}
+        \caption{MM Interface Screenshot}
+    \label{fig1}
+\end{figure}
+
+The MM is \textit{intentionally} confusing. For instance, the ``$+$''
+and ``$-$'' keys are not arithmetic, they simply repeat symbols (``$5+1$''
+$\rightarrow$ ``+++++''); and only the last digit entered matters, 
+so ``$12347+$'' produces seven pluses. It performs no error checking, 
+so malformed inputs can yield odd results. The plus and minus are also hard to distinguish, and so students will commonly mis-count these in the ouput. Alternative characters work equally well, for example where ``3+4-'' produces "+++----'', ``3x4y'' produces ``xxxyyyy''. Once explorers discover this, they can nostly avoid the plus/minus confusion, though many don't discover it on their own. (It is useful to mention this in passing, but not emphasize it.)
+
+\textbf{Phase 2: Figuring Out the ? Key}
+
+Each team now chooses an initial "explorer". The task of the explorer is to try to figure out what the ? key does, as explained in more detail below. To begin, click the button called ``[Move to Phase 2]''. This button will disappear and a mode will be displayed. The mode is initially set to 3. The explorer may explore freely, using either the displayed keypad or their keyboard, while teammates prompt them to verbalize their thinking. Rotate the explorer every about 5 minutes, or when a mode is solved or abandoned. 
+
+Once the explorer has either discovered the function of the ? key, or given up so that the function is revealed by the facilitator, the group changes mode. Use the sequence 3→4→6→2→1 (and →5 if time permits). Be sure to save the traces for discussion. (It will be necessary to manually save the last trace because there is no signal that the team is done.)
+
+\subsection{What the ? Key Actually Does}
+
+Here is what the ? key does in each mode. (``\#'' refers to the digit before the ?, or the most recent digit). 
+
+\begin{itemize}
+\item \textbf{Mode 3} (simplest): Repeats the entire program once, regardless of \#. 
+\item \textbf{Mode 4}: Restarts at the \#th \textit{step} (digit-character pair).
+\item \textbf{Mode 6}: Restarts \# \textit{steps} back from the ?
+\item \textbf{Mode 2}: Restarts at the \#th \textit{character} position (where the first character is \#1).
+\item \textbf{Mode 1}: Restarts \# \textit{characters} back from the ?
+\item \textbf{Mode 5}: Restarts at a \textit{random} character position; the output is non-deterministic!
+\end{itemize}
+
+Aside from Mode 3, which is fairly simple, these can be extremely confusing. Modes 4 and 6, for example, refer to "steps", meaning digit-character pairs, where the first pair is step \#1, and so on. To do this, the MM skips two characters at a time through the program to the desired point. For example, if the program is "3x2y1z", and you add 3? in mode 4, that is: "3x2y1z3?" the result will be "xxxyyzz" because it looped to character 5, where the 3rd step begins. This is fine if the program is in "standard form" --  a series of digit-character pairs, as above. But recall that the MM does no syntax checking, and it is quite common for explorers to insert spaces or forget the \#, making these modes \textit{very} confusing. Even more confusingly, modes 1 and 2 index \textit{individual characters} rather than step pairs. If the explorer is becoming confused their teammates might encourage them to think about what the number before the ? could refer to.
+
+These confusions reveal an important feature of the MM: Small, easily overlooked output variations, such as an extra character or space, can mislead explorers, but can also trigger valuable moments of re-evaluation, as discussed below.
+
+I generally let this exploration go for about 20 minutes, leaving about 20 minutes in a one hour class session for discussion.
+
+\section{Discussion Part 1: The Shape of Instructionless Learning}
+
+\subsection{The 8E's: Core Cognitive Operators in Instructionless Learning}
+
+Instructionless Learning is a problem solving activity.\cite{simon_newell1972_human_problem_solving} Human problem solving is defined by a goal and operators. Here the goal is a correct understanding of the ? key for a particular mode. The operators are cognitive or physical actions that the person uses to change the problem state, eventually (hopefully) reaching their goal. I describe eight operators -- what I call ``The 8 E's'' -- that explorers use to reach their goal in Instructionless Learning. 
+
+Before studying these operators, it is important to note that human problem solving is fundamentally \textit{opportunistic}. No two explorers will reach the goal in the same way; The order in which they use operators depends on countless factors—what they notice, try, misunderstand, or already know. Of course, here I have to discuss the 8 operators in a particular order, but different explorers will almost certainly take different paths to the goal of understanding the ? key.
+
+The 8 E's are:
+
+\begin{itemize}
+\item \textbf{Exploration} – trying various inputs without specific expectations about what the MM will do,
+\item \textbf{Evidence} – observing the MM’s behavior for each input (from the display, History, or memory),
+\item \textbf{Explanation} – making sense of the evidence using one’s current model,
+\item \textbf{Experimentation} – testing a model by trying an input with a predicted outcome,
+\item \textbf{Expectation} – predicting what should happen for particular inputs,
+\item \textbf{Evaluation} – assessing whether the evidence matches the prediction,
+\item \textbf{Evolution} – updating one’s mental model based on new explanations,
+\item \textbf{Exercise} – playfully practicing once a model seems correct, using inputs with “sure” expectations rather than uncertain ones.
+\end{itemize}
+
+\subsection{The Typical Arc of Instructionless Learning}
+
+When first confronted with the ? key, some explorers may simply guess at its function—sometimes correctly, though they still need to run \textbf{experiments} to confirm. More commonly, they begin with \textbf{explorations}, trying several programs containing ? with only vague \textbf{expectations}. They gather \textbf{evidence}, form tentative \textbf{explanations}, and gradually \textbf{evolve} a preliminary mental model.
+
+To validate this model, they conduct more specific \textbf{experiments} and then \textbf{evaluate} the resulting \textbf{evidence} against their predictions. When \textbf{evaluation} succeeds, explorers often declare victory and move to \textbf{exercise}—using their model playfully.
+
+If \textbf{evaluation} fails, they may \textbf{explain} the mismatch, revise or discard their \textbf{expectations}, seek new \textbf{evidence} through further \textbf{exploration}, or simply conclude the \textbf{experiment} was flawed. Of course, some may just give up (perhaps a ninth ``E'': \textbf{Exit}!).
+
+When \textbf{explanation} prompts model \textbf{evolution}, they usually cycle back to conduct fresh \textbf{experiments} until the explorer is satisfied that their understanding works, at which point they again conduct \textbf{exercises}.
+
+\subsection{The 8 E's in More Detail}
+\subsubsection{Exploration: Poking Around Without a Plan}
+
+\textbf{Students will observe} that subjects often begin by simply trying things. An Exploration differs from an Experiment in stance and expectation: the goal is to gather \textbf{Evidence} without a specific prediction.
+
+\textbf{Example from a protocol:}
+\begin{quote}
+``I'm just going to try something... okay, let's see... 3x2?'' [Types 3x2?, clicks GO] ``Okay, that gave me... xxxxxxxx. Huh. So it did something.''
+\end{quote}
+
+Here the explorer isn't testing a hypothesis—they're fishing for data that might suggest an initial model.
+
+\subsubsection{Evidence: Gathering Information}
+
+Every interaction with the MM produces \textbf{evidence}—the output on screen; even no output can be informative. Yet evidence gathering isn't as simple as reading what appears. Subjects often miscount the output, misremember their inputs, overlook patterns, or see what they expect rather than what's actually there (``expectation bias''). This bias is intensified by the difficulty of correctly counting characters, especially the minus signs.
+
+
+\subsubsection{Expectation: What Should Happen?}
+
+\textbf{Expectations} come in two forms: \textbf{vague} (typical of Exploration) — “Something will happen and I'll learn from it” — and \textbf{specific} (typical of Experiments) — “This program should produce exactly this output.” The specificity of expectations strongly affects how explorers respond to results: vague expectations make almost any output “interesting,” while specific ones create a clear success/failure criterion.
+
+
+\subsubsection{Evaluation: Did It Match?}
+
+After gathering \textbf{evidence}, explorers \textbf{evaluate} whether it matches their \textbf{expectation}. Evaluation may seem trivial, but during \textbf{exploration} it is loose—subjects are satisfied if they learn anything. In \textbf{experiments}, it should be rigorous, yet expectation bias often causes explorers to ``see'' what they expect, accepting near misses as successes.
+
+\textbf{Example of failed evaluation:} ``So if I do 4-2? [enters 4-2?, resulting in: "------"] that should give me... wait, how many dashes is that? Let me count... okay, that's eight. So it doubled it! I think it repeats the command.'' [In fact, it produced six dashes in mode 1; the subject miscounted and drew an incorrect conclusion.]
+
+\subsubsection{Explanation: Making Sense of It All}
+
+\textbf{Explanation} is where explorers infer what the ? key does from their observations, drawing on the \textbf{Evidence} they've gathered, their current mental model of the MM, and relevant background knowledge (e.g., calculators, programming, math).
+
+Explanations vary in form. An early example, immediately after initial exploration: “I think it does something with the number before it... maybe it repeats?” A mid-stream example, after a failed experiment: “Okay, so it's not just doubling... maybe it's adding the number to the command? No, that doesn't make sense either...” Here the explorer tests the explanation internally, using \textbf{Evaluation} based on prior \textbf{Evidence}.
+
+Explanation is closely tied to the process of “interpretation” or “view application,” which we will examine further in Part~2.
+
+\subsubsection{Experimentation: Testing Specific Ideas}
+
+Once explorers have a model (from \textbf{Explanation}), they design \textbf{experiments} to test it. An \textbf{experiment} differs from \textbf{exploration} in having a specific hypothesis—a defined \textbf{expectation} of the outcome and a clear criterion for \textbf{evaluation}.
+
+Explorers are often poor at designing discriminating experiments—those that distinguish among competing models. For example, if they believe ``?'' repeats the whole program, they might try ``2+1?'' expecting ``++++'', a result equally consistent with ``? doubles the last command,'' ``? adds 2 to everything,'' and other theories.
+
+Another common issue is creating overly complex experiments whose results are hard to interpret. For example, “Let me try 12x34y56z78?” [In mode 3 this yields ``xxyyyyzzzzzzxxyyyyzzzzzz.''] “Okay, that gave me... wait, what did I even expect this to do?”
+
+Explorers also often vary multiple factors at once, leading to confusion. Despite these limitations, they usually succeed eventually in identifying the correct model for the ? key in most modes—a point we return to in the discussion.
+
+\subsubsection{Exercises: Playing With the Model}
+
+Once explorers believe they understand the ? key, their stance shifts from testing to using—or playing. \textbf{Exercises} still involve \textbf{expectations}, but evaluation becomes less rigorous. Confident in their model, explorers often overlook small discrepancies, declaring success even when their understanding is only partly correct.
+
+\subsubsection{Evolution: Changing the Mental Model}
+
+When \textbf{evaluation} shows that the gathered \textbf{evidence} doesn't match \textbf{expectation}, explorers must decide how to respond. The most productive choice is \textbf{evolution}—revising their mental model to account for the new data. Usually the explorer first undertakes \textbf{explanation}, seeking a view that can accommodate the \textbf{evidence}. Once discovered, that view is merged into the existing model, yielding a revised one, which is then tested through further \textbf{experimentation}.\footnote{Klahr and Dunbar (1988) described instructionless learning as a ``dual-space search'' in which explorers simultaneously search a \textbf{space of experiments} and a \textbf{space of theories}.}
+
+This cycle of explanation, view discovery, and model revision is among the most important yet least understood cognitive processes. It is ``cognitively impenetrable''—difficult to isolate for study—and resembles perception itself, which is why terms like ``view application'' or ``commonsense perception'' are apt. Such discoveries are often accompanied by exclamations of sudden insight: ``Oh! \textit{I see}! It's not counting characters—it's counting the pairs!''
+
+\section{Satisficing: Why Imperfect Problem-Solving Succeeds}
+
+At this point, students may notice a paradox: \textbf{subjects are simultaneously very good and very bad at figuring things out.} They're \textbf{good} at eventually reaching correct (or mostly correct) understanding, but \textbf{bad} at designing optimal experiments, avoiding expectation bias, and systematically testing hypotheses.
+
+So why does instructionless learning work at all?
+
+\subsection{Explorers Satisfice Efficiently}
+
+Herbert Simon, the Nobel laureate often credited with founding cognitive science, introduced the concept of \textbf{satisficing}—accepting a solution “that will permit satisfaction at some specified level of all of [one’s] needs” rather than seeking the optimal one. This follows from \textbf{bounded rationality}: humans have limited time, knowledge, and cognitive capacity \cite{Simon1956}.
+
+\textbf{Students will observe} that subjects rarely design perfect experiments. They try something reasonable, run a few trials, focus on recent evidence, and accept ``good enough.'' \textit{This is actually smart}, not careless: the stakes are low, data are cheap and fast to collect, and the MM rewards rapid, simple experimentation over exhaustive analysis.
+
+In other settings, satisficing yields far more deliberate behavior. Consider scientists developing cancer drugs: experiments cost millions, take years, and carry high human stakes. Researchers must design optimal experiments because errors are costly in both money and suffering. The MM is the opposite extreme—experiments are free, instantaneous, and low-stakes—so trying many simple ones without overanalyzing results is a sensible strategy.
+
+\section{Discussion Part 2: How Mental Models Form and Evolve}
+
+Having explored \textbf{what} explorers do (the 8E's), we now examine \textbf{how} understanding emerges—through mental models, interpretation, and a ubiquitous cognitive process called ``view application.''
+
+\subsection{Understanding and Mental Models}
+
+Throughout this discussion, we've said explorers ``understand'' the MM or ``figure out'' what the ? key does. But what does ``understand'' actually mean? Here it means \textit{having the knowledge, skills, and problem-solving ability needed to achieve one's goals in this domain.}\footnote{Being correct isn't required for understanding; an incorrect understanding is still an understanding.}
+
+Cognitive scientists use the term ``mental model'' to describe a person's understanding of a particular setting: an internal representation that supports goal-directed activity—operating within the system, reasoning about it, explaining it, or predicting its behavior.
+
+\subsection{The Three E's of Understanding: Evaluation, Explanation, Evolution}
+
+Five of the 8E's—\textbf{Exploration, Experimentation, Expectation, Evidence,} and \textbf{Exercise}—describe the \textbf{shape} of instructionless learning: what explorers do and when. The remaining three—\textbf{Evaluation, Explanation,} and \textbf{Evolution}—describe its \textbf{content}: how mental models form and change. These processes are deeply intertwined with a fundamental cognitive mechanism, \textbf{interpretation}.
+
+\subsection{Interpretation: The Foundation of Understanding}
+
+\textbf{Students will observe} that subjects often experience moments of sudden insight—signals of mental model evolution. But what actually happens then?
+
+The answer lies in a cognitive process that operates largely below conscious awareness: \textbf{``view application.''} Understanding this process is crucial, because it functions not only in the MM but across every domain of human activity.
+
+\subsection{View Application: A Ubiquitous but Mysterious Process}
+
+View Application (VA) is so ubiquitous that it has been rediscovered under many names—``framing'' \cite{minsky}, ``script matching'' \cite{Schank}, ``conceptual blending'' \cite{Faulconnier}, ``conceptual combination'' \cite{concomb}—and is closely related to analogy \cite{gentner2002mental}. All describe roughly the same cognitive process operating in different contexts. Although related to analogy, which transfers content from one domain to another, \textbf{view application} instead reformulates understanding through abstract perspective shifts, often encompassing analogical reasoning as a special case.
+
+VA updates one’s overall cognitive state—including mental models—in light of new information. The phrase ``I see what you mean'' captures this perfectly: understanding feels like seeing, even though nothing visual occurs.
+
+View Application is ubiquitous. It operates far beyond the Mystery Machine. Every time we recognize a new situation as an instance of something familiar—seeing a meeting as a game, a problem as a puzzle, or a relationship as a negotiation—we are applying a view. This process runs continually beneath awareness, shaping perception, reasoning, and action in nearly everything we do.
+
+
+\subsection{VA in the Mystery Machine}
+
+Students will likely observe VA operating throughout their protocols. When an explorer says, “Oh, it's like a calculator!”, they are applying a ``calculator'' view. In mode~3, they may exclaim, “Oh! It's repeating the whole program!”, invoking a ``loop'' view. Throughout exploration, such moments illustrate VA—the learner applying abstract concepts (calculator, loop, etc.) to reformulate their understanding of the MM.
+
+\subsection{Evolution Through Interpretation}
+
+How do mental models \textbf{evolve}? Through repeated cycles of view application. Students may hear an explorer say, “I thought it was doubling... but this result doesn't fit... oh! Maybe it's counting back from the question mark... let me try... yes!”
+
+\section{Topics for Advanced Discussion}
+
+\textbf{Child as scientist and lay science:} Children naturally engage in hypothesis testing and exploration. How does their instructionless learning compare to adults'? Is science simply formalized instructionless learning?
+
+\textbf{Cross-cultural differences in mental models:} Different cultures provide different ``views'' to apply. When might analytical versus holistic mindsets yield different models?
+
+\textbf{Interpretive drift and cultural inculcation:} Tanya Luhrmann’s concept of ``interpretive drift'' describes how beliefs shift through gradual reinterpretation \cite{luhrmann1989_persuasion_witches_craft}. How does this relate to view application? Could it explain how children acquire culture?
+
+\textbf{Individual differences:} What factors beyond culture affect instructionless learning—prior knowledge, cognitive ability, personality, motivation? What role does chance play, such as noticing a crucial cue?
+
+\textbf{The limits of satisficing:} In which domains is satisficing inappropriate? How do scientists, engineers, and physicians overcome it? What training or tools promote more systematic investigation?
+
+\section{The Ubiquity of Instructionless Learning}
+
+Instructionless learning operates constantly, from infancy through adulthood, as we navigate new environments, technologies, and social settings.
+
+The Mystery Machine experiment reveals that ``figuring things out'' is far from simple. It's not ``practice makes perfect'' or a smooth climb up a learning curve. \textbf{Microgenetic analysis} shows that learning involves an opportunistic orchestration of cognitive operators—the 8E's—deployed in response to the learner’s situation and experience.
+
+Moreover, understanding—the goal of instructionless learning—doesn't arise from accumulating facts but from \textbf{interpretation}, a cognitive process that runs largely below awareness. When subjects exclaim ``Oh, I get it!'', they’re experiencing \textbf{view application}—reformulating their mental model through new conceptual perspectives.
+
+\textbf{The Ubiquity of View Application:} Students should recognize that interpretation operates constantly. Every sentence, conversation, or situation requires applying familiar frameworks to new contexts. Each ``aha!'' moment reflects restructuring of understanding. The MM experiment simply makes this usually invisible process observable—the ``Oh!'' or ``Wait...'' moments are interpretation in action.
+
+\textbf{Broader Implications:} The Mystery Machine, though simple, exposes core features of human cognition. Educators can support discovery by offering productive views and sequencing practice to make insights likely. Designers can build interfaces that guide correct interpretation and permit safe exploration. Understanding instructionless learning is essential for anyone creating systems people must figure out.
+
+Humans are remarkable: though we forget, err, and design poor experiments, we remain excellent at figuring things out. 
+
+\section*{Acknowledgments}
+
+This paper was grammatically improved by ChatGPT.
+
+\bibliographystyle{apalike}
+\bibliography{mm}
+
+\end{document}
